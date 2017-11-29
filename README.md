@@ -1,6 +1,6 @@
 # pyCOINMON
 
-🐍 Python Port 🐍
+🐍 Python Port 🐍 Based on [COINMON](https://github.com/bichenkk/coinmon)
 
 > 💰 Cryptocurrency price ticker CLI.
 
