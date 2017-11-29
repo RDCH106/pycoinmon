@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.idea/
+dist
+build
+MANIFEST
+pycoinmon.egg-info
