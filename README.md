@@ -1,4 +1,6 @@
-# pyCOINMON
+![logo](https://raw.githubusercontent.com/RDCH106/pycoinmon/master/logo.png)
+
+# About pyCOINMON
 
 🐍 Python Port 🐍 Based on [COINMON](https://github.com/bichenkk/coinmon)
 
