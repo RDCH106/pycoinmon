@@ -4,6 +4,7 @@ import argparse
 from requests import get
 from tabulate import tabulate
 from common import process_data
+from ascii import ascii_title
 
 
 class Metadata:
@@ -36,5 +37,7 @@ args = parser.parse_args()
 payload = {'limit': args.index, 'convert': args.currency}
 response = get(sourceURL, params=payload)
 
+print(ascii_title)
 tabulated_data = process_data(response.json(), currency=args.currency)
 print(tabulate(tabulated_data, headers='firstrow'))
+print("\n")
