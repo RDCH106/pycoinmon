@@ -31,7 +31,7 @@ parser.add_argument('-H', '--humanize', action='store_true', help='Show market c
 args = parser.parse_args()
 
 
-payload = {'limit': 10, 'convert': 'EUR'}
+payload = {'limit': args.index, 'convert': args.currency}
 response = get(sourceURL, params=payload)
 
 print(response.json())
