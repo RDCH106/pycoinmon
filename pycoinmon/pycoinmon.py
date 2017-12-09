@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import argparse
+from requests import get
 
 
 class Metadata:
@@ -16,6 +17,7 @@ class Metadata:
 
 
 meta = Metadata()
+sourceURL = "https://api.coinmarketcap.com/v1/ticker"
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-v', '--version', action='version', version=meta.get_version())
@@ -27,3 +29,9 @@ parser.add_argument('-t', '--top', dest='index',
                     help='Show the top coins ranked from 1 - index according to the market cap', type=int)
 parser.add_argument('-H', '--humanize', action='store_true', help='Show market cap as a humanized number')
 args = parser.parse_args()
+
+
+payload = {'limit': 10, 'convert': 'EUR'}
+response = get(sourceURL, params=payload)
+
+print(response.json())
