@@ -26,7 +26,7 @@ parser.add_argument('-f', '--find', dest='symbol',
                     help='Find specific coin data with coin symbol (can be a space seperated list)',
                     metavar='S', type=str, nargs='+')
 parser.add_argument('-t', '--top', dest='index',
-                    help='Show the top coins ranked from 1 - index according to the market cap', type=int)
+                    help='Show the top coins ranked from 1 - index according to the market cap', type=int, default=10)
 parser.add_argument('-H', '--humanize', action='store_true', help='Show market cap as a humanized number')
 args = parser.parse_args()
 
