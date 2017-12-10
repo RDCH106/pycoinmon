@@ -2,15 +2,6 @@
 
 import difflib
 import copy
-import re
-
-class colors:
-    YELLOW = '\033[93m'
-    RED = '\033[91m'
-    GREEN = '\033[92m'
-    BLUE = '\033[94m'
-    ENDLINE = '\033[0m'
-
 
 fields_good_name = {
     "rank": "Rank",
@@ -43,19 +34,12 @@ def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24
             tabulated_data[0][pos] = tabulated_data[0][pos].replace('USD', currency.upper())
         pos += 1
 
-    tabulated_data[0][0] = colors.YELLOW + tabulated_data[0][0]
-    tabulated_data[0][len(tabulated_data[0])-1] = tabulated_data[0][len(tabulated_data[0])-1] + colors.ENDLINE
+
 
     for item in data:
         tab_item = []
         for field in fields:
-            if field is "percent_change_24h" or field is "percent_change_1h":
-                if  re.search('-\d+\.\d+',  item[field]):
-                    tab_item.append(colors.RED + item[field]+ '%' + colors.ENDLINE)
-                else:
-                    tab_item.append(colors.GREEN + item[field] + '%' + colors.ENDLINE)
-            else:
-                tab_item.append(item[field])
+            tab_item.append(item[field])
         tabulated_data.append(copy.copy(tab_item))
 
 
