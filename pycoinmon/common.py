@@ -55,7 +55,7 @@ def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24
                 else:
                     tab_item.append(colors.GREEN + item[field] + '%' + colors.ENDLINE)
             else:
-                tab_item.append(item[field]+ '%')
+                tab_item.append(item[field])
         tabulated_data.append(copy.copy(tab_item))
 
 
