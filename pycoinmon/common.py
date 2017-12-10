@@ -14,7 +14,7 @@ fields_good_name = {
 }
 
 
-def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_1h', 'percent_change_1h', 'market_cap_usd'],
+def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24h', 'percent_change_1h', 'market_cap_usd'],
                  currency='USD'):
 
     if currency.upper() != 'USD':
