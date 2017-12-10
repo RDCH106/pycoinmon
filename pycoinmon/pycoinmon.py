@@ -10,7 +10,7 @@ from ascii import ascii_title
 class Metadata:
     def __init__(self):
         self.__version__ = '0.1.0'
-        self.__author__ = 'Rubén de Celis Hernández'
+        self.__author__ = 'Rubén de Celis Hernández, Javier Barbadillo'
 
     def get_version(self):
         return self.__version__
