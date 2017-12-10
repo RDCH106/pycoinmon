@@ -11,4 +11,4 @@ install:
   # - pip install -r requirements.txt
 # command to run tests
 script:
-  - python ./tests/pycoinmon.py  # or py.test for Python versions 3.5 and below
+  - python ./tests/test_pycoinmon.py  # or py.test for Python versions 3.5 and below
