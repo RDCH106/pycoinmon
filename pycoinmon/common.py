@@ -2,7 +2,7 @@
 
 import difflib
 import copy
-
+import re
 
 class colors:
     YELLOW = '\033[93m'
@@ -49,7 +49,14 @@ def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24
     for item in data:
         tab_item = []
         for field in fields:
-            tab_item.append(item[field])
+            if field is "percent_change_24h" or field is "percent_change_1h":
+                if  re.search('-\d+\.\d+',  item[field]):
+                    tab_item.append(colors.RED + item[field]+ '%' + colors.ENDLINE)
+                else:
+                    tab_item.append(colors.GREEN + item[field] + '%' + colors.ENDLINE)
+            else:
+                tab_item.append(item[field]+ '%')
         tabulated_data.append(copy.copy(tab_item))
+
 
     return tabulated_data
