@@ -5,6 +5,7 @@ from requests import get
 from tabulate import tabulate
 from common import process_data
 from ascii import ascii_title
+from metadata import Metadata
 
 
 class Metadata:

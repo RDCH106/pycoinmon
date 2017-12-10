@@ -1,5 +1,5 @@
 from setuptools import setup
-from pycoinmon.pycoinmon import Metadata
+from pycoinmon.metadata import Metadata
 
 metadata = Metadata()
 
