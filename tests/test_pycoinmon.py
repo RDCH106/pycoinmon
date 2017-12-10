@@ -48,6 +48,16 @@ class TestPycoinmon(unittest.TestCase):
         ]
         tabulated_data = common.process_data(response)
         self.assertEqual(len(tabulated_data), 3)
+        # all items must have same number of fields
+        for item in tabulated_data:
+            self.assertEqual(len(item), len(tabulated_data[0]))
+
+        self.assertEqual(tabulated_data[0][0], common.fields_good_name["rank"])
+        self.assertEqual(tabulated_data[0][1], common.fields_good_name["symbol"])
+        self.assertEqual(tabulated_data[0][2], common.fields_good_name["price"])
+        self.assertEqual(tabulated_data[0][3], common.fields_good_name["percent_change_24h"])
+        self.assertEqual(tabulated_data[0][4], common.fields_good_name["percent_change_1h"])
+        self.assertEqual(tabulated_data[0][5], common.fields_good_name["market_cap"])
 
 if __name__ == '__main__':
     unittest.main()
