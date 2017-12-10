@@ -8,6 +8,14 @@ from ascii import ascii_title
 from metadata import Metadata
 
 
+class colors:
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    GREEN = '\033[92m'
+    BLUE = '\033[94m'
+    ENDLINE = '\033[0m'
+
+
 class PyCoinmon(object):
 
     def __init__(self):
@@ -30,7 +38,7 @@ class PyCoinmon(object):
         payload = {'limit': args.index, 'convert': args.currency}
         response = get(self.sourceURL, params=payload)
 
-        print(ascii_title)
+        print(colors.YELLOW + ascii_title + colors.ENDLINE)
         tabulated_data = process_data(response.json(), currency=args.currency)
         print(tabulate(tabulated_data, headers='firstrow'))
         print("\n")
