@@ -2,7 +2,7 @@ from setuptools import setup
 setup(
     name = 'pycoinmon',
     version='1.0',
-    packages = ['pycoinmon','requests','tabulate'],
+    packages = ['pycoinmon'],
     license = 'MIT',
     description = 'Python Port Based on COINMON',
     url = 'https://github.com/RDCH106/pycoinmon',
