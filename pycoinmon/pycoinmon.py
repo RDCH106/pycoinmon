@@ -7,6 +7,7 @@ import re
 from common import process_data
 from ascii import ascii_title
 from metadata import Metadata
+from terminaltables import AsciiTable
 
 
 class colors:
@@ -42,13 +43,17 @@ class PyCoinmon(object):
         print(colors.YELLOW + ascii_title + colors.ENDLINE)
         tabulated_data = process_data(response.json(), currency=args.currency)
         self.color_data(tabulated_data)
-        print(tabulate(tabulated_data, headers='firstrow'))
+        table = AsciiTable(tabulated_data)
+        print(table.table)
+
+        # print(tabulate(tabulated_data, headers='firstrow'))
         print("\n")
 
     @staticmethod
     def color_data(data):
         data[0][0] = colors.YELLOW + data[0][0]
         data[0][len(data[0]) - 1] = data[0][len(data[0]) - 1] + colors.ENDLINE
+
         for item in data[1:]:
             if re.search('-\d+\.\d+', item[3]):
                 item[3] = colors.RED + item[3] + '%' + colors.ENDLINE
