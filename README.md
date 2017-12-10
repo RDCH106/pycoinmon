@@ -2,6 +2,7 @@
 
 # About pyCOINMON
 
+[![Build Status](https://travis-ci.org/RDCH106/pycoinmon.svg?branch=master)](https://travis-ci.org/RDCH106/pycoinmon)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/30fca0e3463649f88584cd89c118eac2)](https://www.codacy.com/app/RDCH106/pycoinmon?utm_source=github.com&utm_medium=referral&utm_content=RDCH106/pycoinmon&utm_campaign=badger)
 
 🐍 Python Port 🐍 Based on [COINMON](https://github.com/bichenkk/coinmon)
