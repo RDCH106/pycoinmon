@@ -4,16 +4,9 @@ import argparse
 from requests import get
 from tabulate import tabulate
 from common import process_data
+from common import colors as colors
 from ascii import ascii_title
 from metadata import Metadata
-
-
-class colors:
-    YELLOW = '\033[93m'
-    RED = '\033[91m'
-    GREEN = '\033[92m'
-    BLUE = '\033[94m'
-    ENDLINE = '\033[0m'
 
 
 class PyCoinmon(object):

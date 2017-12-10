@@ -4,6 +4,14 @@ import difflib
 import copy
 
 
+class colors:
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    GREEN = '\033[92m'
+    BLUE = '\033[94m'
+    ENDLINE = '\033[0m'
+
+
 fields_good_name = {
     "rank": "Rank",
     "symbol": "Symbol",
@@ -34,6 +42,9 @@ def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24
         if good_header in ['price', 'market_cap']:
             tabulated_data[0][pos] = tabulated_data[0][pos].replace('USD', currency.upper())
         pos += 1
+
+    tabulated_data[0][0] = colors.YELLOW + tabulated_data[0][0]
+    tabulated_data[0][len(tabulated_data[0])-1] = tabulated_data[0][len(tabulated_data[0])-1] + colors.ENDLINE
 
     for item in data:
         tab_item = []
