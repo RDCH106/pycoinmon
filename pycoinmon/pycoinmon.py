@@ -7,7 +7,7 @@ import re
 from common import process_data
 from ascii import ascii_title
 from metadata import Metadata
-from terminaltables import AsciiTable
+#from terminaltables import AsciiTable
 
 
 class colors:
@@ -43,10 +43,9 @@ class PyCoinmon(object):
         print(colors.YELLOW + ascii_title + colors.ENDLINE)
         tabulated_data = process_data(response.json(), currency=args.currency)
         self.color_data(tabulated_data)
-        table = AsciiTable(tabulated_data)
-        print(table.table)
-
-        # print(tabulate(tabulated_data, headers='firstrow'))
+        # table = AsciiTable(tabulated_data)
+        # print(table.table)
+        print(tabulate(tabulated_data, headers='firstrow', tablefmt="grid"))
         print("\n")
 
     @staticmethod
