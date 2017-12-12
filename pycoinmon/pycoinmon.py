@@ -3,9 +3,19 @@
 import argparse
 from requests import get
 from tabulate import tabulate
+import re
 from common import process_data
 from ascii import ascii_title
 from metadata import Metadata
+from terminaltables import AsciiTable
+
+
+class colors:
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    GREEN = '\033[92m'
+    BLUE = '\033[94m'
+    ENDLINE = '\033[0m'
 
 
 class PyCoinmon(object):
@@ -30,10 +40,30 @@ class PyCoinmon(object):
         payload = {'limit': args.index, 'convert': args.currency}
         response = get(self.sourceURL, params=payload)
 
-        print(ascii_title)
+        print(colors.YELLOW + ascii_title + colors.ENDLINE)
         tabulated_data = process_data(response.json(), currency=args.currency)
-        print(tabulate(tabulated_data, headers='firstrow'))
+        self.color_data(tabulated_data)
+        table = AsciiTable(tabulated_data)
+        print(table.table)
+
+        # print(tabulate(tabulated_data, headers='firstrow'))
         print("\n")
+
+    @staticmethod
+    def color_data(data):
+        data[0][0] = colors.YELLOW + data[0][0]
+        data[0][len(data[0]) - 1] = data[0][len(data[0]) - 1] + colors.ENDLINE
+
+        for item in data[1:]:
+            if re.search('-\d+\.\d+', item[3]):
+                item[3] = colors.RED + item[3] + '%' + colors.ENDLINE
+            else:
+                item[3] = colors.GREEN + item[3] + '%' + colors.ENDLINE
+            if re.search('-\d+\.\d+', item[4]):
+                item[4] = colors.RED + item[4] + '%' + colors.ENDLINE
+            else:
+                item[4] = colors.GREEN + item[4] + '%' + colors.ENDLINE
+
 
 if __name__ == "__main__":
     pycoinmon = PyCoinmon()

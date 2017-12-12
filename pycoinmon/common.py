@@ -3,7 +3,6 @@
 import difflib
 import copy
 
-
 fields_good_name = {
     "rank": "Rank",
     "symbol": "Symbol",
@@ -35,10 +34,13 @@ def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24
             tabulated_data[0][pos] = tabulated_data[0][pos].replace('USD', currency.upper())
         pos += 1
 
+
+
     for item in data:
         tab_item = []
         for field in fields:
             tab_item.append(item[field])
         tabulated_data.append(copy.copy(tab_item))
+
 
     return tabulated_data
