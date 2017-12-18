@@ -10,6 +10,9 @@ setup(
     license = 'MIT',
     description = 'Python Port Based on COINMON',
     url = 'https://github.com/RDCH106/pycoinmon',
+    entry_points={
+        'console_scripts': ['pycoinmon=pycoinmon:main'],
+    },
     keywords = ['bitcoin', 'criptocurrency', 'crypto', 'ticker', 'python', 'cli', 'price-tracker', 'command-line'],
     classifiers = ['Programming Language :: Python',
                    'Programming Language :: Python :: 2.7',
