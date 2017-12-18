@@ -16,9 +16,9 @@ def requirements():
 
 
 setup(
-    install_requires = requirements(),
     name = 'pycoinmon',
     packages = ['pycoinmon'],
+    install_requires = requirements(),
     version = metadata.get_version(),
     license = 'MIT',
     description = 'Python Port Based on COINMON',
