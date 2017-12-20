@@ -4,18 +4,10 @@ import argparse
 from requests import get
 from tabulate import tabulate
 import re
-from pycoinmon.common import process_data
+from pycoinmon.common import process_data, colors
 from pycoinmon.ascii import ascii_title
 from pycoinmon.metadata import Metadata
 #from terminaltables import AsciiTable
-
-
-class colors:
-    YELLOW = '\033[93m'
-    RED = '\033[91m'
-    GREEN = '\033[92m'
-    BLUE = '\033[94m'
-    ENDLINE = '\033[0m'
 
 
 class PyCoinmon(object):

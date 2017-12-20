@@ -12,6 +12,12 @@ fields_good_name = {
     "market_cap": "Market Cap (USD)"
 }
 
+class colors:
+    YELLOW = '\033[93m'
+    RED = '\033[91m'
+    GREEN = '\033[92m'
+    BLUE = '\033[94m'
+    ENDLINE = '\033[0m'
 
 def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24h', 'percent_change_1h', 'market_cap_usd'],
                  currency='USD'):
