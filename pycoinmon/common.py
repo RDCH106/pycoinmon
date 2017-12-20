@@ -2,6 +2,7 @@
 
 import difflib
 import copy
+import re
 
 fields_good_name = {
     "rank": "Rank",
@@ -12,12 +13,29 @@ fields_good_name = {
     "market_cap": "Market Cap (USD)"
 }
 
-class colors:
+
+class Colors:
     YELLOW = '\033[93m'
     RED = '\033[91m'
     GREEN = '\033[92m'
     BLUE = '\033[94m'
     ENDLINE = '\033[0m'
+
+    @staticmethod
+    def color_data(data):
+        data[0][0] = Colors.YELLOW + data[0][0]
+        data[0][len(data[0]) - 1] = data[0][len(data[0]) - 1] + Colors.ENDLINE
+
+        for item in data[1:]:
+            if re.search('-\d+\.\d+', item[3]):
+                item[3] = Colors.RED + item[3] + '%' + Colors.ENDLINE
+            else:
+                item[3] = Colors.GREEN + item[3] + '%' + Colors.ENDLINE
+            if re.search('-\d+\.\d+', item[4]):
+                item[4] = Colors.RED + item[4] + '%' + Colors.ENDLINE
+            else:
+                item[4] = Colors.GREEN + item[4] + '%' + Colors.ENDLINE
+
 
 def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24h', 'percent_change_1h', 'market_cap_usd'],
                  currency='USD'):
