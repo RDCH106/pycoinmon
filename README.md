@@ -41,19 +41,19 @@ You can use the `-c` (or `--convert`) with the fiat currency symbol to find in t
 The default currency is USD and it supports AUD, BRL, CAD, CHF, CLP, CNY, CZK, DKK, EUR, GBP, HKD, HUF, IDR, ILS, INR, JPY, KRW, MXN, MYR, NOK, NZD, PHP, PKR, PLN, RUB, SEK, SGD, THB, TRY, TWD, ZAR.
 
 ```
-$ python pycoinmon -c eur // convert prices to Euro
-$ python pycoinmon -c jpy // convert prices to Yen
+$ pycoinmon -c eur // convert prices to Euro
+$ pycoinmon -c jpy // convert prices to Yen
 ```
 
 You can use the `-t` (or `--top`) with the index to find the top n cryptocurrencies ranked by their market cap.
 
 ```
-$ python pycoinmon -t 50 // find top 50
-$ python pycoinmon -t 1000 // find top 1000
+$ pycoinmon -t 50 // find top 50
+$ pycoinmon -t 1000 // find top 1000
 ```
 
 You can use the `-h` (or `--help`) to find all valid options of pycoinmon
 
 ```
-$ python pycoinmon -h
+$ pycoinmon -h
 ```
