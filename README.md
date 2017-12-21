@@ -4,7 +4,7 @@
 
 [![PyPI](https://img.shields.io/pypi/v/pycoinmon.svg)](https://pypi.python.org/pypi/pycoinmon)
 [![PyPI](https://img.shields.io/pypi/pyversions/pycoinmon.svg)](https://pypi.python.org/pypi/pycoinmon)
-[![PyPI](https://img.shields.io/pypi/l/pycoinmon.svg)](https://github.com/ingran/pycoinmon/blob/master/LICENSE)
+[![PyPI](https://img.shields.io/pypi/l/pycoinmon.svg)](https://github.com/RDCH106/pycoinmon/blob/master/LICENSE)
 [![Build Status](https://travis-ci.org/RDCH106/pycoinmon.svg?branch=master)](https://travis-ci.org/RDCH106/pycoinmon)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/30fca0e3463649f88584cd89c118eac2)](https://www.codacy.com/app/RDCH106/pycoinmon?utm_source=github.com&utm_medium=referral&utm_content=RDCH106/pycoinmon&utm_campaign=badger)
 
