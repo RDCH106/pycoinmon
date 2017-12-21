@@ -8,12 +8,14 @@ from pycoinmon.ascii import ascii_title, process_title
 from pycoinmon.metadata import Metadata
 #from terminaltables import AsciiTable
 from colorama import init, deinit
+import os
 
 
 class PyCoinmon(object):
 
     def __init__(self):
-        init()
+        if 'PYCHARM_HOSTED' not in os.environ:  # Exclude PyCharm IDE from colorama init
+            init()
         self.meta = Metadata()
         self.sourceURL = "https://api.coinmarketcap.com/v1/ticker"
 
