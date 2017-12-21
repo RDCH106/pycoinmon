@@ -7,13 +7,18 @@ from pycoinmon.common import process_data, Colors
 from pycoinmon.ascii import ascii_title
 from pycoinmon.metadata import Metadata
 #from terminaltables import AsciiTable
+from colorama import init, deinit
 
 
 class PyCoinmon(object):
 
     def __init__(self):
+        init()
         self.meta = Metadata()
         self.sourceURL = "https://api.coinmarketcap.com/v1/ticker"
+
+    def __del__(self):
+        deinit()
 
     def run(self):
 
