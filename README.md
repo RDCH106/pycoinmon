@@ -48,6 +48,13 @@ $ pycoinmon -c eur // convert prices to Euro
 $ pycoinmon -c jpy // convert prices to Yen
 ```
 
+You can use the `-f` (or `--find`) with coin symbol to search cryptocurrencies. You can add symbols seperated by space.
+
+```
+$ pycoinmon -f btc // search coins included keyword btc
+$ pycoinmon -f btc eth // search coins included keyword btc or eth
+```
+
 You can use the `-t` (or `--top`) with the index to find the top n cryptocurrencies ranked by their market cap.
 
 ```
