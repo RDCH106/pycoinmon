@@ -48,7 +48,6 @@ class TestPycoinmon(unittest.TestCase):
         ]
 
     def test_find_data(self):
-        print("--test find data--")
         filtered_data = common.find_data(self.response, ['BTC'])
         self.assertEqual(len(filtered_data), 1)
         filtered_data = common.find_data(self.response, ['btc'])
@@ -65,7 +64,6 @@ class TestPycoinmon(unittest.TestCase):
         self.assertEqual(len(filtered_data), 2)
 
     def test_tabulate_data(self):
-        print("--test tabulate data--")
         tabulated_data = common.process_data(self.response)
         self.assertEqual(len(tabulated_data), 3)
         # all items must have same number of fields
@@ -80,4 +78,4 @@ class TestPycoinmon(unittest.TestCase):
         self.assertEqual(tabulated_data[0][5], common.fields_good_name["market_cap"])
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(verbosity=2)
