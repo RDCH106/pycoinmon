@@ -97,7 +97,7 @@ setup(
     install_requires = requirements(),
     version = metadata.get_version(),
     license = 'MIT',
-    description = 'Python Port Based on COINMON',
+    description = 'The cryptocurrency price tool on CLI',
     long_description= long_description,
     url = 'https://github.com/RDCH106/pycoinmon',
     entry_points={
