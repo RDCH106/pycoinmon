@@ -65,3 +65,14 @@ def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24
         tabulated_data.append(copy.copy(tab_item))
 
     return tabulated_data
+
+
+def find_data(data, symbols):
+
+    symbols = [x.upper() for x in symbols]   # Convert to upper-case
+    filtered_items = []
+    for item in data:
+        if item['symbol'] in symbols:
+            filtered_items.append(item)
+
+    return filtered_items

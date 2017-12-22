@@ -3,7 +3,7 @@
 import argparse
 from requests import get
 from tabulate import tabulate
-from pycoinmon.common import process_data, Colors
+from pycoinmon.common import process_data, find_data, Colors
 from pycoinmon.ascii import ascii_title, process_title
 from pycoinmon.metadata import Metadata
 #from terminaltables import AsciiTable
@@ -40,7 +40,11 @@ class PyCoinmon(object):
 
         print(process_title(ascii_title))
         # print(Colors.YELLOW + ascii_title + Colors.ENDLINE)
-        tabulated_data = process_data(response.json(), currency=args.currency)
+        if args.symbol:
+            filtered_data = find_data(response.json(), args.symbol)
+        else:
+            filtered_data = response.json()
+        tabulated_data = process_data(filtered_data, currency=args.currency)
         Colors.color_data(tabulated_data)
         # table = AsciiTable(tabulated_data)
         # print(table.table)
