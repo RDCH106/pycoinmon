@@ -3,9 +3,9 @@ import pycoinmon.common as common
 
 
 class TestPycoinmon(unittest.TestCase):
-    def test_create(self):
-        print("--test create--")
-        response = [
+
+    def setUp(self):
+        self.response = [
             {
                 "id": "bitcoin",
                 "name": "Bitcoin",
@@ -46,7 +46,10 @@ class TestPycoinmon(unittest.TestCase):
                 "market_cap_eur": "37017236998.0"
             }
         ]
-        tabulated_data = common.process_data(response)
+
+    def test_tabulate_data(self):
+        print("--test tabulate data--")
+        tabulated_data = common.process_data(self.response)
         self.assertEqual(len(tabulated_data), 3)
         # all items must have same number of fields
         for item in tabulated_data:
