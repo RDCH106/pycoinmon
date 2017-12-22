@@ -47,6 +47,23 @@ class TestPycoinmon(unittest.TestCase):
             }
         ]
 
+    def test_find_data(self):
+        print("--test find data--")
+        filtered_data = common.find_data(self.response, ['BTC'])
+        self.assertEqual(len(filtered_data), 1)
+        filtered_data = common.find_data(self.response, ['btc'])
+        self.assertEqual(len(filtered_data), 1)
+        filtered_data = common.find_data(self.response, ['eth'])
+        self.assertEqual(len(filtered_data), 1)
+        filtered_data = common.find_data(self.response, ['ETH'])
+        self.assertEqual(len(filtered_data), 1)
+        filtered_data = common.find_data(self.response, ['LTC'])
+        self.assertEqual(len(filtered_data), 0)
+        filtered_data = common.find_data(self.response, ['BTC', 'eth'])
+        self.assertEqual(len(filtered_data), 2)
+        filtered_data = common.find_data(self.response, ['BTC', 'eth', 'ltc'])
+        self.assertEqual(len(filtered_data), 2)
+
     def test_tabulate_data(self):
         print("--test tabulate data--")
         tabulated_data = common.process_data(self.response)
