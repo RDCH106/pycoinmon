@@ -95,7 +95,7 @@ setup(
     entry_points={
         'console_scripts': ['pycoinmon=pycoinmon.main:main'],
     },
-    keywords = ['bitcoin', 'criptocurrency', 'crypto', 'ticker', 'python', 'cli', 'price-tracker', 'command-line'],
+    keywords = 'bitcoin criptocurrency crypto ticker python cli price-tracker command-line',
     classifiers = ['Programming Language :: Python',
                    'Programming Language :: Python :: 2.7',
                    'Programming Language :: Python :: 3.2',
