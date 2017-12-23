@@ -32,7 +32,7 @@ class PyCoinmon(object):
                             metavar='S', type=str, nargs='+')
         parser.add_argument('-t', '--top', dest='index',
                             help='Show the top coins ranked from 1 - index according to the market cap', type=int, default=10)
-        parser.add_argument('-H', '--humanize', action='store_true', help='Show market cap as a humanized number')
+        parser.add_argument('-H', '--humanize', dest='humanize', action='store_true', help='Show market cap as a humanized number')
         args = parser.parse_args()
 
         payload = {'limit': args.index, 'convert': args.currency}
@@ -44,7 +44,7 @@ class PyCoinmon(object):
             filtered_data = find_data(response.json(), args.symbol)
         else:
             filtered_data = response.json()
-        tabulated_data = process_data(filtered_data, currency=args.currency)
+        tabulated_data = process_data(filtered_data, currency=args.currency, humanize=args.humanize)
         Colors.color_data(tabulated_data)
         # table = AsciiTable(tabulated_data)
         # print(table.table)

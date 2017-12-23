@@ -3,6 +3,7 @@
 import difflib
 import copy
 import re
+from humanize import intword
 
 fields_good_name = {
     "rank": "Rank",
@@ -38,7 +39,7 @@ class Colors:
 
 
 def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24h', 'percent_change_1h', 'market_cap_usd'],
-                 currency='USD'):
+                 currency='USD', humanize=True):
 
     if currency.upper() != 'USD':
         pos = 0
@@ -61,7 +62,10 @@ def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24
     for item in data:
         tab_item = []
         for field in fields:
-            tab_item.append(item[field])
+            if humanize and re.search('market_cap*', field):
+                tab_item.append(intword(int(float(item[field]))))
+            else:
+                tab_item.append(item[field])
         tabulated_data.append(copy.copy(tab_item))
 
     return tabulated_data
