@@ -62,6 +62,12 @@ $ pycoinmon -t 50 // find top 50
 $ pycoinmon -t 1000 // find top 1000
 ```
 
+You can use the `-H` (or `--humanize`) to display market cap in humanized format.
+
+```
+$ pycoinmon -H // show market cap in humanized number format like 58.9 billion 
+```
+
 You can use the `-h` (or `--help`) to find all valid options of pycoinmon
 
 ```
