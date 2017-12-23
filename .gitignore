@@ -5,3 +5,4 @@ dist
 build
 MANIFEST
 pycoinmon.egg-info
+core.spec
