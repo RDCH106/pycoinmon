@@ -31,6 +31,10 @@ $ cd pycoinmon
 $ pip install .
 ```
 
+If you are Windows user, you can download binaries of latest release from here:
+
+https://github.com/RDCH106/pycoinmon/releases/latest
+
 ## Usage
 
 To check the top 10 cryptocurrencies ranked by their market cap, simply execute
