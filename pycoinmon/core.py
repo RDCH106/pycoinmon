@@ -3,7 +3,7 @@
 import argparse
 from requests import get
 from tabulate import tabulate
-from pycoinmon.common import process_data, find_data, Colors
+from pycoinmon.common import process_data, find_data, Colors, check_conversion
 from pycoinmon.ascii import ascii_title, process_title
 from pycoinmon.metadata import Metadata
 #from terminaltables import AsciiTable
@@ -34,6 +34,10 @@ class PyCoinmon(object):
                             help='Show the top coins ranked from 1 - index according to the market cap', type=int, default=10)
         parser.add_argument('-H', '--humanize', dest='humanize', action='store_true', help='Show market cap as a humanized number')
         args = parser.parse_args()
+
+        if not check_conversion(args.currency):
+            print(Colors.RED + "We cannot convert to your fiat currency." + Colors.ENDLINE)
+            return
 
         payload = {'limit': args.index, 'convert': args.currency}
         response = get(self.sourceURL, params=payload)
