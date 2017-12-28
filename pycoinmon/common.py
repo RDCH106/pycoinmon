@@ -41,7 +41,7 @@ class Colors:
 def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24h', 'percent_change_1h', 'market_cap_usd'],
                  currency='USD', humanize=True):
 
-    if currency.upper() != 'USD':
+    if currency != 'USD':
         pos = 0
         for field in fields:
             fields[pos] = field.replace('usd', currency.lower())
@@ -56,7 +56,7 @@ def process_data(data, fields=['rank', 'symbol', 'price_usd', 'percent_change_24
         good_header = difflib.get_close_matches(header, fields_good_name.keys())[0]
         tabulated_data[0][pos] = fields_good_name[good_header]
         if good_header in ['price', 'market_cap']:
-            tabulated_data[0][pos] = tabulated_data[0][pos].replace('USD', currency.upper())
+            tabulated_data[0][pos] = tabulated_data[0][pos].replace('USD', currency)
         pos += 1
 
     for item in data:
