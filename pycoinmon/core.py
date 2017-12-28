@@ -3,7 +3,7 @@
 import argparse
 from requests import get
 from tabulate import tabulate
-from pycoinmon.common import process_data, find_data, Colors, check_conversion
+from pycoinmon.common import process_data, find_data, Colors
 from pycoinmon.ascii import ascii_title, process_title
 from pycoinmon.metadata import Metadata
 #from terminaltables import AsciiTable
@@ -20,13 +20,18 @@ class PyCoinmon(object):
         self.sourceURL = "https://api.coinmarketcap.com/v1/ticker"
 
     def __del__(self):
-        deinit()
+        if deinit is not None:   # Prevent error when argparse raise exception
+            deinit()
 
     def run(self):
 
         parser = argparse.ArgumentParser()
         parser.add_argument('-v', '--version', action='version', version=self.meta.get_version())
-        parser.add_argument('-c', '--convert', dest='currency', help='Convert to your fiat currency', default='usd')
+        parser.add_argument('-c', '--convert', dest='currency', help='Convert to your fiat currency', default='usd',
+                            choices=['USD', 'AUD', 'BRL', 'CAD', 'CHF', 'CLP', 'CNY', 'CZK', 'DKK', 'EUR', 'GBP', 'HKD',
+                                     'HUF', 'IDR', 'ILS', 'INR', 'JPY', 'KRW', 'MXN', 'MYR', 'NOK', 'NZD', 'PHP', 'PKR',
+                                     'PLN', 'RUB', 'SEK', 'SGD', 'THB', 'TRY', 'TWD', 'ZAR'],
+                            type=lambda s: s.upper())
         parser.add_argument('-f', '--find', dest='symbol',
                             help='Find specific coin data with coin symbol (can be a space seperated list)',
                             metavar='S', type=str, nargs='+')
@@ -35,20 +40,12 @@ class PyCoinmon(object):
         parser.add_argument('-H', '--humanize', dest='humanize', action='store_true', help='Show market cap as a humanized number')
         args = parser.parse_args()
 
-        if not check_conversion(args.currency):
-            print(Colors.RED + "We cannot convert to your fiat currency." + Colors.ENDLINE)
-            return
-
         payload = {'limit': args.index, 'convert': args.currency}
         response = get(self.sourceURL, params=payload)
 
         print(process_title(ascii_title))
         # print(Colors.YELLOW + ascii_title + Colors.ENDLINE)
-        if args.symbol:
-            filtered_data = find_data(response.json(), args.symbol)
-        else:
-            filtered_data = response.json()
-        tabulated_data = process_data(filtered_data, currency=args.currency, humanize=args.humanize)
+        tabulated_data = process_data(response.json(), currency=args.currency, humanize=args.humanize)
         Colors.color_data(tabulated_data)
         # table = AsciiTable(tabulated_data)
         # print(table.table)

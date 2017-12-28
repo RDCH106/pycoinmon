@@ -80,15 +80,3 @@ def find_data(data, symbols):
             filtered_items.append(item)
 
     return filtered_items
-
-
-def check_conversion(currency):
-
-    availableCurrencies = ['USD', 'AUD', 'BRL', 'CAD', 'CHF', 'CLP', 'CNY', 'CZK', 'DKK', 'EUR', 'GBP', 'HKD', 'HUF',
-                           'IDR', 'ILS', 'INR', 'JPY', 'KRW', 'MXN', 'MYR', 'NOK', 'NZD', 'PHP', 'PKR', 'PLN', 'RUB',
-                           'SEK', 'SGD', 'THB', 'TRY', 'TWD', 'ZAR']
-
-    if currency.upper() in availableCurrencies:
-        return True
-    else:
-        return False
