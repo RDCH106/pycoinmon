@@ -38,6 +38,11 @@ class PyCoinmon(object):
         parser.add_argument('-t', '--top', dest='index',
                             help='Show the top coins ranked from 1 - index according to the market cap', type=int, default=10)
         parser.add_argument('-H', '--humanize', dest='humanize', action='store_true', help='Show market cap as a humanized number')
+        parser.add_argument('-l', '--layout', dest='template', help='Select table layout', default='grid',
+                            choices=['plain', 'simple', 'grid', 'fancy_grid', 'pipe', 'orgtbl', 'jira', 'presto',
+                                     'psql', 'rst', 'mediawiki', 'moinmoin', 'youtrack', 'html', 'latex', 'latex_raw',
+                                     'latex_booktabs', 'textile'],
+                            type=lambda s: s.lower())
         args = parser.parse_args()
 
         payload = {'limit': args.index, 'convert': args.currency}
@@ -49,7 +54,7 @@ class PyCoinmon(object):
         Colors.color_data(tabulated_data)
         # table = AsciiTable(tabulated_data)
         # print(table.table)
-        print(tabulate(tabulated_data, headers='firstrow', tablefmt="grid"))
+        print(tabulate(tabulated_data, headers='firstrow', tablefmt=args.template))
         print("\n")
 
 
