@@ -40,14 +40,16 @@ class PyCoinmon(object):
         parser.add_argument('-u', '--update', dest='update_frequency', action='store', nargs='?', const=1, type=int, help='Update coin data each seconds specified. If 0 just show one time. To exit push q.')
         self.args = parser.parse_args()
 
-
     def __del__(self):
         if deinit is not None:   # Prevent error when argparse raise exception
             deinit()
 
-    def run(self):
+    def request_values(self):
         payload = {'limit': self.args.index, 'convert': self.args.currency}
-        response = get(self.sourceURL, params=payload)
+        return get(self.sourceURL, params=payload)
+
+    def run(self):
+        response = self.request_values()
 
         print(process_title(ascii_title))
         # print(Colors.YELLOW + ascii_title + Colors.ENDLINE)
