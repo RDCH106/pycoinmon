@@ -40,8 +40,7 @@ class PyCoinmon(object):
         parser.add_argument('-H', '--humanize', dest='humanize', action='store_true', help='Show market cap as a humanized number')
         parser.add_argument('-l', '--layout', dest='template', help='Select table layout', default='grid',
                             choices=['plain', 'simple', 'grid', 'fancy_grid', 'pipe', 'orgtbl', 'jira', 'presto',
-                                     'psql', 'rst', 'mediawiki', 'moinmoin', 'youtrack', 'html', 'latex', 'latex_raw',
-                                     'latex_booktabs', 'textile'],
+                                     'psql', 'rst'],
                             type=lambda s: s.lower())
         args = parser.parse_args()
 
