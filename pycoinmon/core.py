@@ -19,12 +19,7 @@ class PyCoinmon(object):
         self.meta = Metadata()
         self.sourceURL = "https://api.coinmarketcap.com/v1/ticker"
 
-    def __del__(self):
-        if deinit is not None:   # Prevent error when argparse raise exception
-            deinit()
-
-    def run(self):
-
+        # Parse arguments provided
         parser = argparse.ArgumentParser()
         parser.add_argument('-v', '--version', action='version', version=self.meta.get_version())
         parser.add_argument('-c', '--convert', dest='currency', help='Convert to your fiat currency', default='usd',
@@ -43,18 +38,24 @@ class PyCoinmon(object):
                                      'psql', 'rst'],
                             type=lambda s: s.lower())
         parser.add_argument('-u', '--update', dest='update_frequency', action='store', nargs='?', const=1, type=int, help='Update coin data each seconds specified. If 0 just show one time. To exit push q.')
-        args = parser.parse_args()
+        self.args = parser.parse_args()
 
-        payload = {'limit': args.index, 'convert': args.currency}
+
+    def __del__(self):
+        if deinit is not None:   # Prevent error when argparse raise exception
+            deinit()
+
+    def run(self):
+        payload = {'limit': self.args.index, 'convert': self.args.currency}
         response = get(self.sourceURL, params=payload)
 
         print(process_title(ascii_title))
         # print(Colors.YELLOW + ascii_title + Colors.ENDLINE)
-        tabulated_data = process_data(response.json(), currency=args.currency, humanize=args.humanize)
+        tabulated_data = process_data(response.json(), currency=self.args.currency, humanize=self.args.humanize)
         Colors.color_data(tabulated_data)
         # table = AsciiTable(tabulated_data)
         # print(table.table)
-        print(tabulate(tabulated_data, headers='firstrow', tablefmt=args.template))
+        print(tabulate(tabulated_data, headers='firstrow', tablefmt=self.args.template))
         print("\n")
 
 
