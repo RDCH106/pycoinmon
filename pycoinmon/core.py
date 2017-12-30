@@ -42,6 +42,7 @@ class PyCoinmon(object):
                             choices=['plain', 'simple', 'grid', 'fancy_grid', 'pipe', 'orgtbl', 'jira', 'presto',
                                      'psql', 'rst'],
                             type=lambda s: s.lower())
+        parser.add_argument('-u', '--update', dest='update_frequency', action='store', nargs='?', const=1, type=int, help='Update coin data each seconds specified. If 0 just show one time. To exit push q.')
         args = parser.parse_args()
 
         payload = {'limit': args.index, 'convert': args.currency}
