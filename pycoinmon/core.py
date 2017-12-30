@@ -49,7 +49,11 @@ class PyCoinmon(object):
 
         print(process_title(ascii_title))
         # print(Colors.YELLOW + ascii_title + Colors.ENDLINE)
-        tabulated_data = process_data(response.json(), currency=args.currency, humanize=args.humanize)
+        if args.symbol:
+            filtered_data = find_data(response.json(), args.symbol)
+        else:
+            filtered_data = response.json()
+        tabulated_data = process_data(filtered_data, currency=args.currency, humanize=args.humanize)
         Colors.color_data(tabulated_data)
         # table = AsciiTable(tabulated_data)
         # print(table.table)
