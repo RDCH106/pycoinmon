@@ -9,7 +9,7 @@ from pycoinmon.metadata import Metadata
 #from terminaltables import AsciiTable
 from colorama import init, deinit
 import os
-
+import time
 
 class PyCoinmon(object):
 
@@ -48,7 +48,7 @@ class PyCoinmon(object):
         payload = {'limit': self.args.index, 'convert': self.args.currency}
         return get(self.sourceURL, params=payload)
 
-    def run(self):
+    def print_values(self):
         response = self.request_values()
 
         print(process_title(ascii_title))
@@ -60,6 +60,13 @@ class PyCoinmon(object):
         print(tabulate(tabulated_data, headers='firstrow', tablefmt=self.args.template))
         print("\n")
 
+    def run(self):
+        if self.args.update_frequency and self.args.update_frequency > 0:
+            while(True):
+                self.print_values()
+                time.sleep(int(self.args.update_frequency))
+        else:
+            self.print_values()
 
 if __name__ == "__main__":
     pycoinmon = PyCoinmon()
