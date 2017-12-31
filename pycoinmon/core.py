@@ -57,16 +57,12 @@ class PyCoinmon(object):
         payload = {'limit': self.args.index, 'convert': self.args.currency}
         return get(self.sourceURL, params=payload)
 
-    @staticmethod
-    def do_clear_screen():
-        os.system('cls' if os.name == 'nt' else 'clear')
-
     def print_values(self):
         # Update values
         response = self.request_values()
 
         # Clear screen
-        self.do_clear_screen()
+        os.system('cls||clear')
 
         # Redraw data
         print(process_title(ascii_title))
