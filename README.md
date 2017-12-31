@@ -74,6 +74,12 @@ $ pycoinmon -t 50 // find top 50
 $ pycoinmon -t 1000 // find top 1000
 ```
 
+You can use the `-u` (or `--update`) with the refresh frequency in seconds. The value must be bigger than 0.
+
+```
+$ pycoinmon -u 10 // update data each 10 seconds
+```
+
 You can use the `-H` (or `--humanize`) to display market cap in humanized format.
 
 ```
