@@ -84,7 +84,7 @@ class PyCoinmon(object):
                 while(True):
                     self.print_values()
                     time.sleep(int(self.args.frequency))
-            except:
+            except KeyboardInterrupt:
                 pass
         else:
             self.print_values()
