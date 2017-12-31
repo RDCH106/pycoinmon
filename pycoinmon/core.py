@@ -62,7 +62,10 @@ class PyCoinmon(object):
         response = self.request_values()
 
         # Clear screen
-        os.system('cls||clear')
+        if os.name == 'nt':
+            os.system('cls')   # on windows
+        else:
+            os.system('clear')   # on linux / os x
 
         # Redraw data
         print(process_title(ascii_title))
