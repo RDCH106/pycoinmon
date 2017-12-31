@@ -30,15 +30,16 @@ class PyCoinmon(object):
         parser.add_argument('-f', '--find', dest='symbol',
                             help='Find specific coin data with coin symbol (can be a space seperated list)',
                             metavar='S', type=str, nargs='+')
+        parser.add_argument('-l', '--layout', dest='template', help='Select table layout', default='grid',
+                            choices=['plain', 'simple', 'grid', 'fancy_grid', 'pipe', 'orgtbl', 'presto', 'psql',
+                                     'rst'],
+                            type=lambda s: s.lower())
         parser.add_argument('-t', '--top', dest='index',
                             help='Show the top coins ranked from 1 - index according to the market cap', type=int, default=10)
-        parser.add_argument('-H', '--humanize', dest='humanize', action='store_true', help='Show market cap as a humanized number')
-        parser.add_argument('-l', '--layout', dest='template', help='Select table layout', default='grid',
-                            choices=['plain', 'simple', 'grid', 'fancy_grid', 'pipe', 'orgtbl', 'presto', 'psql', 'rst'],
-                            type=lambda s: s.lower())
         parser.add_argument('-u', '--update', dest='frequency',
                             help='Update data with frequency specified in seconds. If 0 just show one time.',
                             type=self.check_positive)
+        parser.add_argument('-H', '--humanize', dest='humanize', action='store_true', help='Show market cap as a humanized number')
         self.args = parser.parse_args()
 
     def __del__(self):
