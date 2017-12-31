@@ -84,8 +84,9 @@ class PyCoinmon(object):
     def run(self):
         if self.args.frequency:
             try:
-                while(True):
+                while True:
                     self.print_values()
+                    print("Press Ctrl + C to exit.")
                     time.sleep(int(self.args.frequency))
             except KeyboardInterrupt:
                 pass
