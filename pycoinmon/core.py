@@ -34,8 +34,7 @@ class PyCoinmon(object):
                             help='Show the top coins ranked from 1 - index according to the market cap', type=int, default=10)
         parser.add_argument('-H', '--humanize', dest='humanize', action='store_true', help='Show market cap as a humanized number')
         parser.add_argument('-l', '--layout', dest='template', help='Select table layout', default='grid',
-                            choices=['plain', 'simple', 'grid', 'fancy_grid', 'pipe', 'orgtbl', 'jira', 'presto',
-                                     'psql', 'rst'],
+                            choices=['plain', 'simple', 'grid', 'fancy_grid', 'pipe', 'orgtbl', 'presto', 'psql', 'rst'],
                             type=lambda s: s.lower())
         parser.add_argument('-u', '--update', dest='frequency',
                             help='Update data with frequency specified in seconds. If 0 just show one time.',
