@@ -37,7 +37,8 @@ class PyCoinmon(object):
                             choices=['plain', 'simple', 'grid', 'fancy_grid', 'pipe', 'orgtbl', 'jira', 'presto',
                                      'psql', 'rst'],
                             type=lambda s: s.lower())
-        parser.add_argument('-u', '--update', dest='update_frequency', action='store', nargs='?', const=1, type=int, help='Update coin data each seconds specified. If 0 just show one time. To exit push q.')
+        parser.add_argument('-u', '--update', dest='frequency',
+                            help='Update data with frequency specified in seconds. If 0 just show one time.', type=int)
         self.args = parser.parse_args()
 
     def __del__(self):
@@ -65,12 +66,13 @@ class PyCoinmon(object):
         print("\n")
 
     def run(self):
-        if self.args.update_frequency and self.args.update_frequency > 0:
+        if self.args.frequency and self.args.frequency > 0:
             while(True):
                 self.print_values()
-                time.sleep(int(self.args.update_frequency))
+                time.sleep(int(self.args.frequency))
         else:
             self.print_values()
+
 
 if __name__ == "__main__":
     pycoinmon = PyCoinmon()
