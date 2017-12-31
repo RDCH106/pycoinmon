@@ -93,6 +93,12 @@ pycoinmon
 
     $ pycoinmon -h
 
+Screenshot
+----------
+
+.. figure:: https://raw.githubusercontent.com/RDCH106/pycoinmon/master/pycoinmon.png
+   :alt: pycoinmon screenshot
+
 .. _COINMON: https://github.com/bichenkk/coinmon
 .. _coinmarketcap.com: https://coinmarketcap.com/
     """
