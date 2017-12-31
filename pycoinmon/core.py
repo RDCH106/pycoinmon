@@ -84,9 +84,12 @@ class PyCoinmon(object):
 
     def run(self):
         if self.args.frequency:
-            while(True):
-                self.print_values()
-                time.sleep(int(self.args.frequency))
+            try:
+                while(True):
+                    self.print_values()
+                    time.sleep(int(self.args.frequency))
+            except:
+                pass
         else:
             self.print_values()
 
