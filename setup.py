@@ -106,6 +106,8 @@ setup(
     license = 'MIT',
     description = 'The cryptocurrency price tool on CLI',
     long_description= long_description,
+    author = metadata.get_author(),
+    author_email = 'contact@rdch106.hol.es',
     url = 'https://github.com/RDCH106/pycoinmon',
     entry_points={
         'console_scripts': ['pycoinmon=pycoinmon.main:main'],
