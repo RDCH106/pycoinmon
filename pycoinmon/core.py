@@ -38,12 +38,20 @@ class PyCoinmon(object):
                                      'psql', 'rst'],
                             type=lambda s: s.lower())
         parser.add_argument('-u', '--update', dest='frequency',
-                            help='Update data with frequency specified in seconds. If 0 just show one time.', type=int)
+                            help='Update data with frequency specified in seconds. If 0 just show one time.',
+                            type=self.check_positive)
         self.args = parser.parse_args()
 
     def __del__(self):
         if deinit is not None:   # Prevent error when argparse raise exception
             deinit()
+
+    @staticmethod
+    def check_positive(value):
+        ivalue = int(value)
+        if ivalue <= 0:
+            raise argparse.ArgumentTypeError("%s is an invalid positive int value" % value)
+        return ivalue
 
     def request_values(self):
         payload = {'limit': self.args.index, 'convert': self.args.currency}
@@ -66,7 +74,7 @@ class PyCoinmon(object):
         print("\n")
 
     def run(self):
-        if self.args.frequency and self.args.frequency > 0:
+        if self.args.frequency:
             while(True):
                 self.print_values()
                 time.sleep(int(self.args.frequency))
