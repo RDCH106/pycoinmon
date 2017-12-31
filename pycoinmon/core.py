@@ -58,8 +58,13 @@ class PyCoinmon(object):
         return get(self.sourceURL, params=payload)
 
     def print_values(self):
+        # Update values
         response = self.request_values()
 
+        # Clear screen
+        os.system('cls' if os.name == 'nt' else 'clear')
+
+        # Redraw data
         print(process_title(ascii_title))
         # print(Colors.YELLOW + ascii_title + Colors.ENDLINE)
         if self.args.symbol:
