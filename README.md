@@ -59,6 +59,14 @@ $ pycoinmon -f btc // search coins included keyword btc
 $ pycoinmon -f btc eth // search coins included keyword btc or eth
 ```
 
+You can use the `-l` (or `--layout`) with template name to print the table with different style.
+The default layout template is grid and it supports plain, simple, fancy_grid, pipe, orgtbl, 'presto', 'psql', 'rst'.
+
+```
+$ pycoinmon -l plain // show table with plain style
+$ pycoinmon -l fancy_grid // show table with fancy_grid style
+```
+
 You can use the `-t` (or `--top`) with the index to find the top n cryptocurrencies ranked by their market cap.
 
 ```
