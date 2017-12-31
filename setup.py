@@ -109,6 +109,7 @@ setup(
     author = metadata.get_author(),
     author_email = 'contact@rdch106.hol.es',
     url = 'https://github.com/RDCH106/pycoinmon',
+    download_url = 'https://github.com/RDCH106/pycoinmon/archive/v'+metadata.get_version()+'.tar.gz',
     entry_points={
         'console_scripts': ['pycoinmon=pycoinmon.main:main'],
     },
