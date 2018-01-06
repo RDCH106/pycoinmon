@@ -54,8 +54,12 @@ class PyCoinmon(object):
         return ivalue
 
     def request_values(self):
-        payload = {'limit': self.args.index, 'convert': self.args.currency}
-        return get(self.sourceURL, params=payload)
+        try:
+            payload = {'limit': self.args.index, 'convert': self.args.currency}
+            return get(self.sourceURL, params=payload)
+        except Exception as e:
+            print(e)
+            exit(-1)   # Exit with error
 
     def print_values(self):
         # Update values
