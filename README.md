@@ -93,6 +93,12 @@ You can use the `-h` (or `--help`) to find all valid options of pycoinmon
 $ pycoinmon -h
 ```
 
+You can use the `--debug` to show debug info when an error occurred.
+
+```
+$ pycoinmon --debug
+```
+
 ## Screenshot
 
 ![pycoinmon screenshot](https://raw.githubusercontent.com/RDCH106/pycoinmon/master/pycoinmon.png)
