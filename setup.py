@@ -104,11 +104,17 @@ humanized format.
     $ pycoinmon -H // show market cap in humanized format like 58.9 billion
 
 You can use the ``-h`` (or ``--help``) to find all valid options of
-pycoinmon
+pycoinmon.
 
 ::
 
     $ pycoinmon -h
+
+You can use the ``--debug`` to show debug info when an error occurred.
+
+::
+
+    $ pycoinmon --debug
 
 Screenshot
 ----------
