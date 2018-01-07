@@ -40,6 +40,7 @@ class PyCoinmon(object):
                             help='Update data with frequency specified in seconds. If 0 just show one time.',
                             type=self.check_positive)
         parser.add_argument('-H', '--humanize', dest='humanize', action='store_true', help='Show market cap as a humanized number')
+        parser.add_argument('--debug', dest='debug', action='store_true', help='Show debug info when an error occurred')
         self.args = parser.parse_args()
 
     def __del__(self):
@@ -58,8 +59,11 @@ class PyCoinmon(object):
             payload = {'limit': self.args.index, 'convert': self.args.currency}
             return get(self.sourceURL, params=payload)
         except Exception as e:
-            template = "An exception of type {0} occurred.\n\n{1!r}"
-            print(template.format(type(e).__name__, e.args))
+            template = "\nAn exception of type {0} occurred"
+            print(template.format(type(e).__name__))
+            if self.args.debug:
+                template = "\n{0!r}"
+                print(template.format(e.args))
             exit(-1)   # Exit with error
 
     def print_values(self):
