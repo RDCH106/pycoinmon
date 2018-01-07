@@ -58,7 +58,8 @@ class PyCoinmon(object):
             payload = {'limit': self.args.index, 'convert': self.args.currency}
             return get(self.sourceURL, params=payload)
         except Exception as e:
-            print(e)
+            template = "An exception of type {0} occurred.\n\n{1!r}"
+            print(template.format(type(e).__name__, e.args))
             exit(-1)   # Exit with error
 
     def print_values(self):
