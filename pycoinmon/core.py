@@ -10,6 +10,7 @@ from pycoinmon.metadata import Metadata
 from colorama import init, deinit
 import os
 import time
+import sys
 
 class PyCoinmon(object):
 
@@ -64,7 +65,7 @@ class PyCoinmon(object):
             if self.args.debug:
                 template = "{0!r}"
                 print(template.format(e.args))
-            exit(-1)   # Exit with error
+            sys.exit(-1)   # Exit with error
 
     def print_values(self):
         # Update values
