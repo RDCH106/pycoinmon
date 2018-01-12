@@ -3,7 +3,7 @@
 
 class Metadata:
     def __init__(self):
-        self.__version__ = '0.4.4'
+        self.__version__ = '0.4.5'
         self.__author__ = 'Rubén de Celis Hernández, Javier Barbadillo, Víctor Goñi'
 
     def get_version(self):

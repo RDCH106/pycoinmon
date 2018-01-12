@@ -89,7 +89,8 @@ class PyCoinmon(object):
         Colors.color_data(tabulated_data)
         # table = AsciiTable(tabulated_data)
         # print(table.table)
-        print(tabulate(tabulated_data, headers='firstrow', tablefmt=self.args.template))
+        print(tabulate(tabulated_data, headers='firstrow',
+                       tablefmt=self.args.template, numalign="decimal", stralign="center"))
         print("\n")
 
     def run(self):
