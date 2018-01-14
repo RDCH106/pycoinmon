@@ -8,9 +8,11 @@ from pycoinmon.ascii import ascii_title, process_title
 from pycoinmon.metadata import Metadata
 #from terminaltables import AsciiTable
 from colorama import init, deinit
+from pyspin.spin import make_spin, Spin1
 import os
 import time
 import sys
+
 
 class PyCoinmon(object):
 
@@ -55,6 +57,7 @@ class PyCoinmon(object):
             raise argparse.ArgumentTypeError("%s is an invalid positive int value" % value)
         return ivalue
 
+    @make_spin(Spin1, "")
     def request_values(self):
         try:
             payload = {'limit': self.args.index, 'convert': self.args.currency}
