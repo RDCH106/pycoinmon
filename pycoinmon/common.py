@@ -29,14 +29,14 @@ class Colors:
 
         for item in data[1:]:
             if item[3] is None:
-                item[3] = "?"
+                item[3] = Colors.YELLOW + "?" + Colors.ENDLINE;
             else:
                 if re.search('-\d+\.\d+', item[3]):
                     item[3] = Colors.RED + item[3] + '%' + Colors.ENDLINE
                 else:
                     item[3] = Colors.GREEN + item[3] + '%' + Colors.ENDLINE
             if item[4] is None:
-                item[4] = "?"
+                item[4] = Colors. YELLOW + "?" + Colors.ENDLINE
             else:
                 if re.search('-\d+\.\d+', item[4]):
                     item[4] = Colors.RED + item[4] + '%' + Colors.ENDLINE
