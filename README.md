@@ -61,7 +61,7 @@ $ pycoinmon -f btc eth // search coins included keyword btc or eth
 ```
 
 You can use the `-l` (or `--layout`) with template name to print the table with different style.
-The default layout template is grid and it supports plain, simple, fancy_grid, pipe, orgtbl, presto, psql, rst.
+The default layout template is grid and it supports plain, simple, grid, fancy_grid, pipe, orgtbl, presto, psql, rst.
 
 ```
 $ pycoinmon -l plain // show table with plain style
