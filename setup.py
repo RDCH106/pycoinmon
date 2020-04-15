@@ -143,6 +143,7 @@ setup(
         'console_scripts': ['pycoinmon=pycoinmon.main:main'],
     },
     keywords = 'bitcoin criptocurrency crypto ticker python cli price-tracker command-line',
+    python_requires='>=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*',
     classifiers = ['Programming Language :: Python',
                    'Programming Language :: Python :: 2.7',
                    'Programming Language :: Python :: 3.4',
