@@ -1,5 +1,7 @@
 ![logo](https://raw.githubusercontent.com/RDCH106/pycoinmon/master/logo.png)
 
+**⚠️ Pycoinmon will be out of service until the migration to the new CoinCap API is performed**
+
 # About pyCOINMON
 
 [![PyPI](https://img.shields.io/pypi/v/pycoinmon.svg)](https://pypi.python.org/pypi/pycoinmon)
