@@ -20,7 +20,7 @@ class PyCoinmon(object):
         if 'PYCHARM_HOSTED' not in os.environ:  # Exclude PyCharm IDE from colorama init
             init()
         self.meta = Metadata()
-        self.sourceURL = "https://api.coinmarketcap.com/v1/ticker"
+        self.sourceURL = "https://api.coincap.io/v2/assets"  # Old: https://api.coinmarketcap.com/v1/ticker
 
         # Parse arguments provided
         parser = argparse.ArgumentParser()
